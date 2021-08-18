@@ -13,11 +13,11 @@ public with sharing class EnumValueOf {
         }
         Season currentSeason = seasonsByName.get(currentSeasonInput);
 
-        System.debug('Current season: ' + currentSeason);
+        System.debug('Current season (older technique): ' + currentSeason);
 
         // With Winter'22
         Season currentSeasonWithValueOf = Season.valueOf(currentSeasonInput);
 
-        System.debug('Current season: ' + currentSeasonWithValueOf);
+        System.debug('Current season (new technique): ' + currentSeasonWithValueOf);
     }
 }
