@@ -12,16 +12,15 @@ public with sharing class SampleFunctionCall {
         // Call Function Asynchronously
         functions.Function myFunction = functions.Function.get('example.errorfunction');
         myFunction.invoke('{}', new SampleFunctionCallback());
-
     }
 
     private static void postToChatter(functions.FunctionInvocation invokeResult) {
         FeedItem post = new FeedItem();
         if (invokeResult.getStatus() == functions.FunctionInvocationStatus.ERROR) {
-            post.Subject = 'Error while processing Function';
+            post.Title = 'Error while processing Function';
             post.Body = 'Invocation ID: ' + invokeResult.getInvocationId() + '\n Error: ' + invokeResult.getError();
         } else {
-            post.Subject = 'Function executed successfully';
+            post.Title = 'Function executed successfully';
             post.Body = 'Invocation ID: ' + invokeResult.getInvocationId();
         }
 

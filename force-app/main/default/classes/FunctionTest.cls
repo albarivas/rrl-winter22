@@ -13,7 +13,7 @@ private class FunctionTest {
         // Verify success Chatter post has been created
         FeedItem post = [SELECT Id FROM FeedItem ORDER BY CreatedDate DESC LIMIT 1];
         System.assertNotEquals(null, post);
-        System.assertEquals('Function executed successfully', post.Subject);
+        System.assertEquals('Function executed successfully', post.Title);
         System.assertEquals('Invocation ID: 000000000000000', post.Body);
     }
 
@@ -21,7 +21,6 @@ private class FunctionTest {
     static void testAsyncFunctionCallError() {
         // Set mock class to respond to function invocations
         Test.setMock(functions.FunctionInvokeMock.class, new FunctionsInvokeMockInner());
-        functions.Function mockedFunction = functions.Function.get('example.errorfunction');
 
         //Asynchronous function invocation with callback
         Test.startTest();
@@ -31,7 +30,7 @@ private class FunctionTest {
         // Verify Chatter post has been created
         FeedItem post = [SELECT Id FROM FeedItem ORDER BY CreatedDate DESC LIMIT 1];
         System.assertNotEquals(null, post);
-        System.assertEquals('Error while processing Function', post.Subject);
+        System.assertEquals('Error while processing Function', post.Title);
         System.assertEquals('Invocation ID: 000000000000000 \n Error: Function returned an error!', post.Body);
     }
 
