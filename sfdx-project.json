@@ -5,7 +5,7 @@
       "default": true
     }
   ],
-  "name": "Winter22 Examples",
+  "name": "winter22_examples",
   "namespace": "",
   "sfdcLoginUrl": "https://login.salesforce.com",
   "sourceApiVersion": "53.0"
