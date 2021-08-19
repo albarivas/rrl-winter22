@@ -1,7 +1,7 @@
 public with sharing class SampleFunctionCall {
     public static void callFunctionSynchronously() {
         // Call Function Synchronously
-        functions.Function myFunction = functions.Function.get('example.successfunction');
+        functions.Function myFunction = functions.Function.get('example.myfunction');
         functions.FunctionInvocation invokeResult = myFunction.invoke('{}');
 
         // Post to Chatter if error
@@ -10,7 +10,7 @@ public with sharing class SampleFunctionCall {
 
     public static void callFunctionAsynchronously() {
         // Call Function Asynchronously
-        functions.Function myFunction = functions.Function.get('example.errorfunction');
+        functions.Function myFunction = functions.Function.get('example.myfunction');
         myFunction.invoke('{}', new SampleFunctionCallback());
     }
 

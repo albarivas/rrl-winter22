@@ -21,7 +21,9 @@ private class FunctionTest {
     @isTest
     static void testAsyncFunctionCallError() {
         // Set mock class to respond to function invocations
-        Test.setMock(functions.FunctionInvokeMock.class, new FunctionsInvokeMockInner());
+        FunctionsInvokeMockInner mock = new FunctionsInvokeMockInner();
+        mock.throwError = true;
+        Test.setMock(functions.FunctionInvokeMock.class, mock);
 
         //Asynchronous function invocation with callback
         Test.startTest();
@@ -37,9 +39,11 @@ private class FunctionTest {
     }
 
     public class FunctionsInvokeMockInner implements functions.FunctionInvokeMock {
-        String invocationId = '000000000000000';
+        public Boolean throwError = false;
+        private String invocationId = '000000000000000';
+
         public functions.FunctionInvocation respond(String functionName, String payload) {
-            if(functionName == 'example.errorfunction') {
+            if(throwError) {
                 return functions.MockFunctionInvocationFactory.createErrorResponse(
                     invocationId,
                     functions.FunctionErrorType.FUNCTION_EXCEPTION,
