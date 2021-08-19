@@ -1,7 +1,7 @@
 {
   "orgName": "Winter'22 Examples",
   "edition": "Developer",
-  "features": ["EnableSetPasswordInApi", "CallIAFromApex"],
+  "features": ["EnableSetPasswordInApi", "CallIAFromApex", "Functions"],
   "settings": {
     "lightningExperienceSettings": {
       "enableS1DesktopEnabled": true

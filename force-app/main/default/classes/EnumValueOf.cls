@@ -5,11 +5,11 @@ public with sharing class EnumValueOf {
     public static void convertStringToEnumConstant(){
         String currentSeasonInput = 'WINTER';
 
-        // Before
+        // Before - searching the values()
         Map<String, Season> seasonsByName = new Map<String, Season>();
         for (Season enumValue : Season.values())
         {
-            seasonsByName.put(String.valueOf(enumValue).toUpperCase(), enumValue);
+            seasonsByName.put(enumValue.name().toUpperCase(), enumValue);
         }
         Season currentSeason = seasonsByName.get(currentSeasonInput);
 

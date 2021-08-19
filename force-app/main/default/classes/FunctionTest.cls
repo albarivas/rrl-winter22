@@ -11,8 +11,9 @@ private class FunctionTest {
         Test.stopTest();
 
         // Verify success Chatter post has been created
-        FeedItem post = [SELECT Id FROM FeedItem ORDER BY CreatedDate DESC LIMIT 1];
-        System.assertNotEquals(null, post);
+        List<FeedItem> posts = [SELECT Id FROM FeedItem ORDER BY CreatedDate DESC LIMIT 1];
+        System.assertEquals(1, posts.size());
+        FeedItem post = posts[0];
         System.assertEquals('Function executed successfully', post.Title);
         System.assertEquals('Invocation ID: 000000000000000', post.Body);
     }
@@ -28,8 +29,9 @@ private class FunctionTest {
         Test.stopTest();
 
         // Verify Chatter post has been created
-        FeedItem post = [SELECT Id FROM FeedItem ORDER BY CreatedDate DESC LIMIT 1];
-        System.assertNotEquals(null, post);
+        List<FeedItem> posts = [SELECT Id FROM FeedItem ORDER BY CreatedDate DESC LIMIT 1];
+        System.assertEquals(1, posts.size());
+        FeedItem post = posts[0];
         System.assertEquals('Error while processing Function', post.Title);
         System.assertEquals('Invocation ID: 000000000000000 \n Error: Function returned an error!', post.Body);
     }

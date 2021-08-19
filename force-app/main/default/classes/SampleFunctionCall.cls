@@ -24,11 +24,7 @@ public with sharing class SampleFunctionCall {
             post.Body = 'Invocation ID: ' + invokeResult.getInvocationId();
         }
 
-        try {
-            insert post;
-        } catch (Exception e) {
-            System.debug('Problem posting to Chatter: ' + e.getMessage());
-        }
+        insert post;
     }
 
     public with sharing class SampleFunctionCallback implements functions.FunctionCallback {
